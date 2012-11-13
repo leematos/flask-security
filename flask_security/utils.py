@@ -45,7 +45,7 @@ def login_user(user, remember=True):
         user.last_login_at = old_current or new_current
         user.current_login_at = new_current
 
-        remote_addr = request.remote_addr or 'untrackable'
+        remote_addr = request.access_route[0] or 'untrackable'
         old_current, new_current = user.current_login_ip, remote_addr
         user.last_login_ip = old_current or new_current
         user.current_login_ip = new_current
